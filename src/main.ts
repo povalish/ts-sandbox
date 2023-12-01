@@ -65,12 +65,12 @@ const downloadAndSaveFile = ({ id, size, ext }: ImageUrlParams) => {
 const getGames = async () => {
   const result: GameData[] = [];
 
-  let nextPage = 4;
+  let nextPage = 1;
 
   // while (nextPage) {
     const response = await fetch('https://ethplay.io/api/games_filter', {
       method: 'POST',
-      body: JSON.stringify({ page: 1, page_size: 10 }),
+      body: JSON.stringify({ page: nextPage, page_size: 10 }),
     });
 
     
