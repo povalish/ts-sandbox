@@ -36,8 +36,10 @@
   "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "@img/sharp-darwin-x64": "^0.33.0",
     "@types/fs-extra": "^11.0.4",
     "fs-extra": "^11.2.0",
+    "sharp": "^0.33.0",
     "tslib": "~2.6"
   },
   "volta": {

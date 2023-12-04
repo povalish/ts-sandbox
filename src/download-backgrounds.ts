@@ -1,5 +1,6 @@
 import { GameData } from "./types/GameData.js";
 import { ImageUrlParams } from "./types/ImageUrlParams.js";
+import { convertToWebp } from "./utils/convertToWebp.js";
 import { downloadAndSaveFile, retryDownloadAndSaveFiles } from "./utils/downloadAndSaveFile.js";
 import { saveDownloadLog } from "./utils/saveDownloadLog.js";
 
@@ -20,6 +21,7 @@ export const downloadBackgrounds = async (games: GameData[]) => {
 
   for (const game of games) {
     await downloadAndSaveFile({ ext: 'png', id: game.identifier, type: 'b' }, { onError, onSuccess });
+    await downloadAndSaveFile({ ext: 'jpg', id: game.identifier, type: 'b' }, { onError, onSuccess });
   }
 
   await saveDownloadLog({
@@ -28,6 +30,8 @@ export const downloadBackgrounds = async (games: GameData[]) => {
     failed: failedImages,
     all: games.length,
   });
+
+  convertToWebp({ dir: './build/download-data/b' });
 
   // await retryDownloadAndSaveFiles('game-backgrounds');
 }
